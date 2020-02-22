@@ -5,7 +5,7 @@ import "./TodoList.css"
 class TodoList extends Component {
 
     state = {
-        task: '',
+        taskId: '',
     }
 
     onChangeText = (ev) => {
@@ -16,7 +16,7 @@ class TodoList extends Component {
 
     submit = () => {
         const formData = {
-            task: this.state.task,
+            taskId: this.state.taskId,
         }
 
     fetch('/api/mongodb/TodoList/', {
@@ -27,6 +27,9 @@ class TodoList extends Component {
       .then(response => response.json())
       .then(data => {
         console.log('Got this back', data);
+        this.setState({
+            task: data,
+        });
 
         // Redirect to ???
         // this.props.history.push('/foo/');
@@ -48,6 +51,7 @@ class TodoList extends Component {
           });
       }
 
+
 render() {
     return(
         <div className="EnterTask">
@@ -58,13 +62,23 @@ render() {
         value={this.state.title}
         onChange={this.onChangeTitle}
         />
-        {/* <div className="Blog-articleActions">
-                <div onClick={() => this.deleteArticle(post._id)}>
+        {
+        this.state.TodoList.map((task, index) => (
+            <div ClassName="Todo-List" key={task._id}>
+            <h1>{task.title}</h1>
+            <p>{task.text}</p>
+            <div className="TodoList">
+                <div onClick={() => this.deleteTask(task._id)}>
                   <span alt="delete this">🗑</span>
-        </div> */}
+                </div>
+            </div>
+            </div>
+            )
+        )}
         <br />
         <button onClick={this.submit}>Add Task</button>
         </div>
+
     )
 }
 }
