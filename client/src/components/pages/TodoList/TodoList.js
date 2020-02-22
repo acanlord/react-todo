@@ -63,7 +63,7 @@ render() {
         onChange={this.onChangeTitle}
         />
         {
-        this.state.TodoList.map((task, index) => (
+        this.state.taskId.map((task, index) => (
             <div ClassName="Todo-List" key={task._id}>
             <h1>{task.title}</h1>
             <p>{task.text}</p>
