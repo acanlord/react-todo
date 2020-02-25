@@ -25,7 +25,7 @@ class WriteArticle extends Component {
       text: this.state.text,
     };
 
-    fetch('/api/mongodb/blogposts/', {
+    fetch('/api/mongodb/test/', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(formData),
@@ -35,7 +35,8 @@ class WriteArticle extends Component {
         console.log('Got this back', data);
 
         // Redirect to blog
-        this.props.history.push('/blog/');
+        // this.props.history.push('/blog/');
+        this.props.history.push('/test/');
       });
   }
 

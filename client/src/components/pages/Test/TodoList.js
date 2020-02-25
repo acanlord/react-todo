@@ -13,7 +13,7 @@ class Blog extends Component {
 
   fetchPosts() {
     console.log('Fetching data from API');
-    fetch('/api/mongodb/blogposts/')
+    fetch('/api/mongodb/test/')
       .then(response => response.json())
       .then(data => {
         console.log('Got data back', data);
@@ -26,7 +26,7 @@ class Blog extends Component {
   deleteArticle(documentId) {
     console.log('Sending DELETE for', documentId);
     // Do the DELETE, using "?_id=" to specify which document we are deleting
-    fetch('/api/mongodb/blogposts/?_id=' + documentId, {
+    fetch('/api/mongodb/test/?_id=' + documentId, {
         method: 'DELETE',
       })
       .then(response => response.json())
@@ -54,7 +54,7 @@ class Blog extends Component {
 
     // Do the PUT, using "?_id=" to specify which document we are affecting
     const documentId = article._id;
-    fetch('/api/mongodb/blogposts/?_id=' + documentId, {
+    fetch('/api/mongodb/test/?_id=' + documentId, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(formData),
@@ -83,10 +83,10 @@ class Blog extends Component {
                 <div onClick={() => this.deleteArticle(post._id)}>
                   <span alt="delete this">🗑</span>
                 </div>
-                <div onClick={() => this.voteArticle(post)}>
+                {/* <div onClick={() => this.voteArticle(post)}>
                   <span alt="upvote this">⬆ {post.voteCount}</span>
                 </div>
-              </div>
+              </div> */}
             </div>
           ))
         }
