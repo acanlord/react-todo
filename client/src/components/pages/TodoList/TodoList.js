@@ -1,22 +1,33 @@
 import React, { Component } from "react";
-import TodoItems from "./TodoItems";
+// import TodoItems from "./TodoItems";
 import "./TodoList.css"
 
 class TodoList extends Component {
 
     state = {
-        taskId: '',
+        tasks: [],
+        curTask: '', 
     }
 
     onChangeText = (ev) => {
+        console.log(this.state.tasks);
         this.setState({
-            title: ev.target.value,
+            tasks: ev.target.value,
         })
     }
 
+     onChangeText = (ev) => {
+        console.log(this.state.curTask);
+        this.setState({
+            curTask: ev.target.value,
+        })
+    }
+
+
     submit = () => {
         const formData = {
-            taskId: this.state.taskId,
+            tasks: this.state.tasks,
+            curTask: this.state.curTask,
         }
 
     fetch('/api/mongodb/TodoList/', {
@@ -28,13 +39,13 @@ class TodoList extends Component {
       .then(data => {
         console.log('Got this back', data);
         this.setState({
-            task: data,
+            tasks: data,
         });
-
-        // Redirect to ???
-        // this.props.history.push('/foo/');
-      });
-    }
+    //     console.log(this.state.tasks);
+    //     // Redirect to ???
+    //     // this.props.history.push('/foo/');
+    //   });
+    // }
 
     deleteTask(taskId) {
         console.log('Sending DELETE for', taskId);
@@ -53,20 +64,22 @@ class TodoList extends Component {
 
 
 render() {
-    return(
+    return (
         <div className="EnterTask">
-        <h1>Enter Task</h1>
-        <input
-        name="title"
-        placeholder="Title"
-        value={this.state.title}
-        onChange={this.onChangeTitle}
-        />
-        {
-        this.state.taskId.map((task, index) => (
+            <h1>Enter Task</h1>
+            <input
+                name="title"
+                placeholder="Title"
+                // value={this.state.curTask}
+                onChange={this.onChangeText}
+            />
+        {/* {
+        this.state.tasks.map((task, index) => (
             <div ClassName="Todo-List" key={task._id}>
+
             <h1>{task.title}</h1>
             <p>{task.text}</p>
+
             <div className="TodoList">
                 <div onClick={() => this.deleteTask(task._id)}>
                   <span alt="delete this">🗑</span>
@@ -74,7 +87,7 @@ render() {
             </div>
             </div>
             )
-        )}
+        )} */}
         <br />
         <button onClick={this.submit}>Add Task</button>
         </div>

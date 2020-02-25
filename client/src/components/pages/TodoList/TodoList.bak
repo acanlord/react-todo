@@ -5,7 +5,7 @@ import "./TodoList.css"
 class TodoList extends Component {
 
     state = {
-        task: '',
+        taskId: '',
     }
 
     onChangeText = (ev) => {
@@ -16,7 +16,7 @@ class TodoList extends Component {
 
     submit = () => {
         const formData = {
-            task: this.state.task,
+            taskId: this.state.taskId,
         }
 
     fetch('/api/mongodb/TodoList/', {
@@ -27,16 +27,19 @@ class TodoList extends Component {
       .then(response => response.json())
       .then(data => {
         console.log('Got this back', data);
+        this.setState({
+            task: data,
+        });
 
         // Redirect to ???
         // this.props.history.push('/foo/');
       });
     }
 
-    deleteArticle(documentId) {
-        console.log('Sending DELETE for', documentId);
+    deleteTask(taskId) {
+        console.log('Sending DELETE for', taskId);
         // Do the DELETE, using "?_id=" to specify which document we are deleting
-        fetch('/api/mongodb/TodoList/?_id=' + documentId, {
+        fetch('/api/mongodb/TodoList/?_id=' + taskId, {
             method: 'DELETE',
           })
           .then(response => response.json())
@@ -48,6 +51,7 @@ class TodoList extends Component {
           });
       }
 
+
 render() {
     return(
         <div className="EnterTask">
@@ -58,9 +62,25 @@ render() {
         value={this.state.title}
         onChange={this.onChangeTitle}
         />
+        {/* {
+        this.state.taskId.map((task, index) => (
+            <div ClassName="Todo-List" key={task._id}>
+
+            <h1>{task.title}</h1>
+            <p>{task.text}</p>
+
+            <div className="TodoList">
+                <div onClick={() => this.deleteTask(task._id)}>
+                  <span alt="delete this">🗑</span>
+                </div>
+            </div>
+            </div>
+            )
+        )} */}
         <br />
         <button onClick={this.submit}>Add Task</button>
         </div>
+
     )
 }
 }
