@@ -1,22 +1,33 @@
 import React, { Component } from "react";
 import TodoItems from "./TodoItems";
-import "./TodoList.css"
+// import "./TodoList.css"
 
 class TodoList extends Component {
 
     state = {
-        taskId: '',
+        tasks: [],
+        curTask: '', 
     }
 
     onChangeText = (ev) => {
+        console.log(this.state.tasks);
         this.setState({
-            title: ev.target.value,
+            tasks: ev.target.value,
         })
     }
 
+     onChangeText = (ev) => {
+        console.log(this.state.curTask);
+        this.setState({
+            curTask: ev.target.value,
+        })
+    }
+
+
     submit = () => {
         const formData = {
-            taskId: this.state.taskId,
+            tasks: this.state.tasks,
+            curTask: this.state.curTask,
         }
 
     fetch('/api/mongodb/TodoList/', {
@@ -28,9 +39,9 @@ class TodoList extends Component {
       .then(data => {
         console.log('Got this back', data);
         this.setState({
-            task: data,
+            tasks: data,
         });
-
+        console.log(this.state.tasks);
         // Redirect to ???
         // this.props.history.push('/foo/');
       });
@@ -53,17 +64,17 @@ class TodoList extends Component {
 
 
 render() {
-    return(
+    return (
         <div className="EnterTask">
-        <h1>Enter Task</h1>
-        <input
-        name="title"
-        placeholder="Title"
-        value={this.state.title}
-        onChange={this.onChangeTitle}
-        />
+            <h1>Enter Task</h1>
+            <input
+                name="title"
+                placeholder="Title"
+                // value={this.state.curTask}
+                onChange={this.onChangeText}
+            />
         {/* {
-        this.state.taskId.map((task, index) => (
+        this.state.tasks.map((task, index) => (
             <div ClassName="Todo-List" key={task._id}>
 
             <h1>{task.title}</h1>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-// import TodoItems from "./TodoItems";
-import "./TodoList.css"
+import TodoItems from "./TodoItems";
+// import "./TodoList.css"
 
 class TodoList extends Component {
 
@@ -41,11 +41,11 @@ class TodoList extends Component {
         this.setState({
             tasks: data,
         });
-    //     console.log(this.state.tasks);
-    //     // Redirect to ???
-    //     // this.props.history.push('/foo/');
-    //   });
-    // }
+        console.log(this.state.tasks);
+        // Redirect to ???
+        // this.props.history.push('/foo/');
+      });
+    }
 
     deleteTask(taskId) {
         console.log('Sending DELETE for', taskId);

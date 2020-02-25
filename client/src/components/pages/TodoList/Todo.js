@@ -7,6 +7,7 @@ function Todo() {
         <div>
             <h1>Todo list</h1>
             <TodoList />
+            <TodoItems />
         </div>
     )
 }
