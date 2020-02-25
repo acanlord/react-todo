@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import './WriteArticle.css';
 
 class Todo extends Component {
   state = {
