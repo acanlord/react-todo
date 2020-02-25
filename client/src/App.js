@@ -8,7 +8,7 @@ import LandingPage from './components/pages/LandingPage/LandingPage.js';
 // import TodoList from './components/pages/TodoList/TodoList.js';
 // import Blog from './components/pages/Blog/Blog.js';
 // import WriteArticle from './components/pages/WriteArticle/WriteArticle.js';
-import Todo from './components/pages/Test/Todo.js';
+import Todo from './components/pages/TodoList/Todo.js';
 
 class App extends Component {
   render() {
