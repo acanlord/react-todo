@@ -42,8 +42,8 @@ class Todo extends Component {
 
   render() {
     return (
-      <div className="WriteArticle">
-        <h1>Write an article</h1>
+      <div className="EnterTask">
+        <h1>Eneter a task</h1>
         <input
             name="title"
             placeholder="Title"
