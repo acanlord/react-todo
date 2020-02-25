@@ -9,6 +9,7 @@ import LandingPage from './components/pages/LandingPage/LandingPage.js';
 // import Blog from './components/pages/Blog/Blog.js';
 // import WriteArticle from './components/pages/WriteArticle/WriteArticle.js';
 import Todo from './components/pages/TodoList/Todo.js';
+import TodoList from './components/pages/TodoList/TodoList.js';
 
 class App extends Component {
   render() {
@@ -17,8 +18,8 @@ class App extends Component {
         <nav className="App-navigation">
           <h1 className="App-title">MERN Starter</h1>
           <Link to="/">Welcome</Link>
-          {/* <Link to="/todo/">Todo</Link> */}
-          <Link to="/todo/">TodoList</Link>
+          <Link to="/todoList/">TodoList</Link>
+          <Link to="/todo/">Todo</Link>
           {/* <Link to="/blog/">Blog</Link> */}
           {/* <Link to="/write/">Write Article</Link> */}
         </nav>
@@ -26,7 +27,7 @@ class App extends Component {
         <div className="App-mainContent">
           <Switch>
             <Route exact path='/' component={LandingPage} />
-            {/* <Route exact path='/todo/' component={Todo} /> */}
+            <Route exact path='/todoList/' component={TodoList} />
             <Route exact path='/todo/' component={Todo} />
             {/* <Route exact path='/blog/' component={Blog} /> */}
             {/* <Route exact path='/write/' component={WriteArticle} /> */}
