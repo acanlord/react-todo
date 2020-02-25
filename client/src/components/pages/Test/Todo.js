@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import './WriteArticle.css';
 
-class WriteArticle extends Component {
+class Todo extends Component {
   state = {
     title: '',
     text: '',
@@ -25,18 +25,18 @@ class WriteArticle extends Component {
       text: this.state.text,
     };
 
-    fetch('/api/mongodb/test/', {
+    fetch('/api/mongodb/todo/', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(formData),
       })
       .then(response => response.json())
       .then(data => {
-        console.log('Got this back', data);
+        console.log('Got this back, from Todo', data);
 
         // Redirect to blog
         // this.props.history.push('/blog/');
-        this.props.history.push('/test/');
+        this.props.history.push('/todo/');
       });
   }
 
@@ -69,4 +69,4 @@ class WriteArticle extends Component {
   }
 }
 
-export default WriteArticle;
+export default Todo;
