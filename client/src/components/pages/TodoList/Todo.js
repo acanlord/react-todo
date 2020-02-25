@@ -52,12 +52,12 @@ class Todo extends Component {
           />
         <br />
 
-        <textarea
+        {/* <textarea
             name="content"
             placeholder="Contents"
             value={this.state.details}
             onChange={this.onChangeContent}
-          />
+          /> */}
 
         <br />
 

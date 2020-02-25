@@ -82,9 +82,9 @@ class TodoList extends Component {
                 <div onClick={() => this.deleteTask(post._id)}>
                   <span alt="delete this">🗑</span>
                 </div>
-                <div onClick={() => this.voteArticle(post)}>
+                {/* <div onClick={() => this.voteArticle(post)}>
                   <span alt="upvote this">⬆ {post.voteCount}</span>
-                </div>
+                </div> */}
               </div>
             </div>
           ))
