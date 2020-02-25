@@ -5,11 +5,9 @@ import TodoList from "./TodoList"
 function Todo() {
     return (
         <div>
-            <h1>Todo Test</h1>
-            {/* <TodoList /> */}
-            {/* <TodoItems /> */}
-            <Blog />
-            <WriteArticle />
+            <h1>Todo list</h1>
+            <TodoList />
+            <TodoItems />
         </div>
     )
 }
