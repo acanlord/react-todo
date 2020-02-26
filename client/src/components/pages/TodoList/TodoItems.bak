@@ -51,6 +51,15 @@ class TodoItems extends Component {
           />
         <br />
 
+        {/* <textarea
+            name="content"
+            placeholder="Contents"
+            value={this.state.details}
+            onChange={this.onChangeContent}
+          /> */}
+
+        <br />
+
         <button onClick={this.submit}>Add Tasks</button>
       </div>
 
