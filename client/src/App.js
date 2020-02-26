@@ -4,11 +4,7 @@ import { Link, Switch, Route } from 'react-router-dom'
 import './App.css';
 
 import LandingPage from './components/pages/LandingPage/LandingPage.js';
-// import Todo from './components/pages/Todo/Todo.js';
-// import TodoList from './components/pages/TodoList/TodoList.js';
-// import Blog from './components/pages/Blog/Blog.js';
-// import WriteArticle from './components/pages/WriteArticle/WriteArticle.js';
-import Todo from './components/pages/TodoList/Todo.js';
+import TodoItems from './components/pages/TodoList/TodoItems.js';
 import TodoList from './components/pages/TodoList/TodoList.js';
 
 class App extends Component {
@@ -19,18 +15,14 @@ class App extends Component {
           <h1 className="App-title">MERN Starter</h1>
           <Link to="/">Welcome</Link>
           <Link to="/todoList/">TodoList</Link>
-          <Link to="/todo/">Todo</Link>
-          {/* <Link to="/blog/">Blog</Link> */}
-          {/* <Link to="/write/">Write Article</Link> */}
+          <Link to="/todoItems/">TodoItems</Link>
         </nav>
 
         <div className="App-mainContent">
           <Switch>
             <Route exact path='/' component={LandingPage} />
             <Route exact path='/todoList/' component={TodoList} />
-            <Route exact path='/todo/' component={Todo} />
-            {/* <Route exact path='/blog/' component={Blog} /> */}
-            {/* <Route exact path='/write/' component={WriteArticle} /> */}
+            <Route exact path='/todoItems/' component={TodoItems} />
           </Switch>
         </div>
 
