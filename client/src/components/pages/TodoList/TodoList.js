@@ -70,7 +70,7 @@ class TodoList extends Component {
   render() {
     return (
       <div className="Todo">
-        <h1>Blog</h1>
+        <h1>Task List</h1>
         {
           this.state.blogPosts.map((post, index) => (
             <div className="Todo-Items" key={post._id}>
