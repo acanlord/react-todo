@@ -71,7 +71,7 @@ class TodoList extends Component {
   render() {
     return (
       <div className="Todo">
-        {/* <h1>Task List</h1> */}
+        <h1>Blog</h1>
         {
           this.state.blogPosts.map((post, index) => (
             <div className="Todo-Items" key={post._id}>
@@ -83,6 +83,9 @@ class TodoList extends Component {
                 <div onClick={() => this.deleteTask(post._id)}>
                   <span alt="delete this">🗑</span>
                 </div>
+                {/* <div onClick={() => this.voteArticle(post)}>
+                  <span alt="upvote this">⬆ {post.voteCount}</span>
+                </div> */}
               </div>
             </div>
           ))

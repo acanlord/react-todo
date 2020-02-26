@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-// import TodoList.css from "./TodoList";
+import './Blog.css';
 
 
-class TodoList extends Component {
+class Blog extends Component {
   state = {
     blogPosts: [],
   }
@@ -13,20 +13,20 @@ class TodoList extends Component {
 
   fetchPosts() {
     console.log('Fetching data from API');
-    fetch('/api/mongodb/todo/')
+    fetch('/api/mongodb/blogposts/')
       .then(response => response.json())
       .then(data => {
-        console.log('Got data back, Fetch', data);
+        console.log('Got data back', data);
         this.setState({
           blogPosts: data,
         });
       });
   }
 
-  deleteTask(taskId) {
-    console.log('Sending DELETE for', taskId);
+  deleteArticle(documentId) {
+    console.log('Sending DELETE for', documentId);
     // Do the DELETE, using "?_id=" to specify which document we are deleting
-    fetch('/api/mongodb/todo/?_id=' + taskId, {
+    fetch('/api/mongodb/blogposts/?_id=' + documentId, {
         method: 'DELETE',
       })
       .then(response => response.json())
@@ -53,15 +53,15 @@ class TodoList extends Component {
     };
 
     // Do the PUT, using "?_id=" to specify which document we are affecting
-    const taskId = article._id;
-    fetch('/api/mongodb/todo/?_id=' + taskId, {
+    const documentId = article._id;
+    fetch('/api/mongodb/blogposts/?_id=' + documentId, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(formData),
       })
       .then(response => response.json())
       .then(data => {
-        console.log('Got this back, Put', data);
+        console.log('Got this back', data);
 
         // Call method to refresh data
         this.fetchPosts();
@@ -70,18 +70,21 @@ class TodoList extends Component {
 
   render() {
     return (
-      <div className="Todo">
-        {/* <h1>Task List</h1> */}
+      <div className="Blog">
+        <h1>Blog</h1>
         {
           this.state.blogPosts.map((post, index) => (
-            <div className="Todo-Items" key={post._id}>
+            <div className="Blog-article" key={post._id}>
 
               <h1>{post.title}</h1>
               <p>{post.text}</p>
 
-              <div className="Todo-Actions">
-                <div onClick={() => this.deleteTask(post._id)}>
+              <div className="Blog-articleActions">
+                <div onClick={() => this.deleteArticle(post._id)}>
                   <span alt="delete this">🗑</span>
+                </div>
+                <div onClick={() => this.voteArticle(post)}>
+                  <span alt="upvote this">⬆ {post.voteCount}</span>
                 </div>
               </div>
             </div>
@@ -92,5 +95,5 @@ class TodoList extends Component {
   }
 }
 
-export default TodoList;
+export default Blog;
 

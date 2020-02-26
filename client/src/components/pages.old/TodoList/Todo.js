@@ -1,6 +1,6 @@
 import React from "react"
-  import TodoList from "./TodoList"
   import TodoItems from "./TodoItems"
+  import TodoList from "./TodoList"
 
 
   function Todo() {
